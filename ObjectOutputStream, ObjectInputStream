@@ -1,0 +1,32 @@
+(Read One Object)
+        Student s1 = new Student(1, "Sohaib", 95.25f);
+        Student s2 = new Student(2, "Khaled", 90.5f);
+
+        File file = new File("student.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+        oos.writeObject(s1);
+        oos.writeObject(s2);
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+        Student s3 = (Student) ois.readObject();
+        System.out.println(s3);
+        s3 = (Student) ois.readObject();
+        System.out.println(s3);
+
+(Read Array Of Objects)
+        Student s1 = new Student(1, "Sohaib", 95.25f);
+        Student s2 = new Student(2, "Khaled", 90.5f);
+        Student s3 = new Student(3, "Abdo", 88.0f);
+        Student []arr = new Student[3];
+        arr[0] = s1;
+        arr[1] = s2;
+        arr[2] = s3;
+
+        File file = new File("stud.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+        oos.writeObject(arr);
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+        Student [] arrRead = (Student[]) ois.readObject();
+        for(Student a: arrRead)
+            System.out.println(a);
